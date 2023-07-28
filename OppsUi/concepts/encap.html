@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Encapsulation Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    *{
+        text-align: center;
+    }
+    .container span{
+        border: 3px solid gray;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    ul li{
+        list-style-type:none;
+        font-size: 20px;
+        font-weight: bold;
+    } a{
+        color: aliceblue;
+        text-decoration: none;
+    }
+</style>
+<body>
+    
+  <div class="container">
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">OOPS IMPLEMENTATIONS</span>
+          </nav>
+    </header>
+    <h1>Encapsulation Example</h1>
+    <div>
+      <label for="time">Time : </label>
+      <input type="text" id="time" placeholder="Enter Time" required><br><br>
+      <label for="act">Activity : </label>
+      <input type="text" id="act" placeholder="Enter Activity" required><br><br>
+      <button onclick="create()" class="btn btn-success" id="createPersonBtn">Create Activity</button>
+      <button onclick="clearBtn()" class="btn btn-danger">Clear</button><br><br>
+    </div>
+    <br><br>
+    <ul id="output">
+        
+    </ul>
+    <br><br>
+    <button class="btn btn-info" type="button"><a href="../index.html">Back</a></button>
+    
+  </div>
+  <script>
+
+
+class Person {
+  constructor(time, task) {
+    // Private properties
+    let _time = time;
+    let _task = task;
+
+    // Public method to get the name
+    this.getTime = function() {
+        return _time
+    };
+
+    // Public method to get the age
+    this.getTask = function() {
+      return _task;
+    };
+
+    // Public method to set the age
+
+    this.display = function(){
+        
+        return `Tast - ${this.getTask()} At - ${this.getTime(time)}`;
+    }
+  }
+
+}
+
+function clearBtn(){
+    document.getElementById('time').value="";
+    document.getElementById('act').value="";
+
+}
+function addTask() {
+    
+    if (taskText === "") {
+      alert("Please enter a task.");
+      return;
+    }
+}
+function create(){
+    
+  
+    let time = document.getElementById('time').value;
+    let task = document.getElementById('act').value;
+
+    if (task === "" || time === "") {
+      alert("Please enter valid inputs.");
+    } 
+    const val =  new Person(time,task)
+
+
+
+    const addTaskBtn = document.getElementById("createPersonBtn");
+    const taskText = val.display().trim();
+
+    var taskList = document.getElementById("output")
+    const li = document.createElement("li");
+    const taskContent = document.createElement("span");
+    taskContent.textContent = taskText;
+    li.appendChild(taskContent);
+
+    li.addEventListener("click", () => {
+      li.classList.toggle("completed");
+    });
+
+    taskList.appendChild(li);
+    taskInput.value = "";
+  
+    addTaskBtn.addEventListener("click", addTask);
+    
+}
+
+  </script>
+</body>
+</html>

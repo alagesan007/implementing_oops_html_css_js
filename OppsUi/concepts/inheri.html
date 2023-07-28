@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OOPS Concepts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    *{
+        text-align: center;
+    }
+    .container span{
+       border: 3px solid gray;
+        border-radius: 5px;
+        color: slategray;
+        padding: 5px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+        color: aliceblue;
+    }
+</style>
+<body>
+  <div class="container">
+    <header>
+      <nav class="navbar navbar-light bg-light">
+          <span class="navbar-brand mb-0 h1">OOPS IMPLEMENTATIONS</span>
+        </nav>
+  </header>
+        <h1>Inheritance Example</h1>
+        <br><br>
+        <div>
+            <label for="radius"><b>Radius : </b></label><br><br><br>
+            <input type="text" id="radius" placeholder="Enter radius">
+            <button onclick="CircleBtn()" id="createCircleBtn" class="btn btn-success">Get Area</button>
+            <button onclick="clear_cir()" type="button" class="btn btn-danger">Clear</button>
+        </div><br><br><br>
+        <div>
+            <label for="side"><b>Side Length:</b></label><br><br><br>
+            <input type="text" id="side" placeholder="Enter side length">
+            <button onclick="squareBtn()" id="createSquareBtn" class="btn btn-success">Get Area</button>
+            <button onclick="clear_squ()" type="button" class="btn btn-danger">Clear</button>
+        </div><br><br><br>
+        <label for="output"><h2>ANS : </h2></label>
+        <span id="output"></span>
+        <br><br><br>
+        <button class="btn btn-info" type="button"><a href="../index.html">Back</a></button>
+    
+    </div>
+
+
+  <script>
+    class Shape {
+  constructor(type) {
+    this.type = type;
+  }
+
+  getArea() {
+    return "Area calculation not implemented.";
+  }
+}
+
+class Circle extends Shape {
+  constructor(radius) {
+    super("Circle");
+    this.radius = radius;
+  }
+
+  getArea() {
+    return Math.PI * this.radius ** 2;
+  }
+}
+
+class Square extends Shape {
+  constructor(side) {
+    super("Square");
+    this.side = side;
+  }
+
+  getArea() {
+    return this.side ** 2;
+  }
+}
+function CircleBtn(){
+    var radious = document.getElementById('radius').value;
+
+    const circle = new Circle(parseInt(radious))
+    const val = circle.getArea();
+
+    document.getElementById('output').innerHTML=val;
+}
+function squareBtn(){
+    var length = document.getElementById('side').value;
+
+    const square = new Square(parseInt(length));
+    const val = square.getArea();
+
+    document.getElementById("output").innerHTML = val;
+}
+function clear_cir(){
+    const clear_ele = document.getElementById('radius');
+    clear_ele.value = "";
+    const clear_ans = document.getElementById('output');
+    clear_ans.innerHTML = "";
+}
+function clear_squ(){
+    const clear_ele = document.getElementById('side');
+    clear_ele.value = "";
+    const clear_ans = document.getElementById('output');
+    clear_ans.innerHTML = "";
+}
+
+
+
+  </script>
+</body>
+</html>

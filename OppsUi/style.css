@@ -1,0 +1,11 @@
+*{
+    text-align: center;
+}
+.btn_col button{
+    margin: 1%;
+}
+.btn_col button a{
+    text-align: center;
+    text-decoration: none;
+    color: aliceblue;
+}

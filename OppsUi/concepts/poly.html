@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Polymorphism Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    *{
+        text-align: center;
+    }
+    #output {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: #007BFF;
+  border-radius: 50%;
+  margin: 10px auto;
+  border: 5px solid red;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: #007BFF;
+  margin: 10px auto;
+  border: 5px solid red;
+}
+.container span{
+        border: 3px solid gray;
+        border-radius: 5px;
+        padding: 5px;
+    }
+.rectangle{
+    width: 200px;
+    height: 100px;
+    background-color: #007BFF;
+    margin: 10px auto;
+    border: 5px solid red;
+}
+label{
+    font-size: 20px;
+}
+select{
+    padding: 5px;
+    font-size: 15px;
+}
+button a{
+    text-decoration: none;
+    color: aliceblue;
+}
+</style>
+<body>
+  <div class="container">
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">OOPS IMPLEMENTATIONS</span>
+          </nav>
+    </header>
+    <h1>Polymorphism Example</h1><br><br>
+    <div>
+      <label for="shapeSelect">Select a shape:</label>
+      <select id="shapeSelect">
+        <option value="circle">Circle</option>
+        <option value="square">Square</option>
+        <option value="rectangle">Rectangle</option>
+      </select>
+      <button class="btn btn-primary" id="drawBtn">Draw</button>
+    </div>
+    <br><br><br>
+    <div id="output">
+      <!-- Shape will be drawn here -->
+      
+    </div>
+
+    <br><br><br>
+    <button class="btn btn-info" type="button"><a href="../index.html">Back</a></button>
+  </div>
+  <script>
+
+class Shape {
+  constructor() {
+    this.name = "Shape";
+  }
+
+  draw() {
+    return "Drawing a shape.";
+  }
+}
+
+class Circle extends Shape {
+  constructor() {
+    super();
+    this.name = "Circle";
+  }
+
+  draw() {
+    return "<div class='circle'></div>";
+  }
+}
+
+class Square extends Shape {
+  constructor() {
+    super();
+    this.name = "Square";
+  }
+
+  draw() {
+    return "<div class='square'></div>";
+  }
+}
+class Rectangle extends Shape {
+  constructor() {
+    super();
+    this.name = "rectangle";
+  }
+
+  draw() {
+    return "<div class='rectangle'></div>";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const shapeSelect = document.getElementById("shapeSelect");
+  const drawBtn = document.getElementById("drawBtn");
+  const output = document.getElementById("output");
+
+  drawBtn.addEventListener("click", () => {
+    const selectedShape = shapeSelect.value;
+    let shape;
+
+    if (selectedShape === "circle") {
+      shape = new Circle();
+    } else if (selectedShape === "square") {
+      shape = new Square();
+    }else if(selectedShape === "rectangle"){
+        shape = new Rectangle();
+    } 
+    else {
+      shape = new Shape();
+    }
+
+    output.innerHTML = shape.draw();
+  });
+});
+
+  </script>
+</body>
+</html>
